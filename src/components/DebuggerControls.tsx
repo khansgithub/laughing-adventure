@@ -51,8 +51,8 @@ export const DebuggerControls: React.FC = () => {
 					onClick={resetExecution}
 					className="px-6 py-3 bg-red-500 text-white rounded-xl font-bold text-base transition-all duration-300 flex items-center gap-2 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
 				>
-					<span>🔄</span>
-					<span>{t.reset}</span>
+					<span>{isRunning ? '⏹️' : '🔄'}</span>
+					<span>{isRunning ? t.stop : t.reset}</span>
 				</button>
 			</div>
 			

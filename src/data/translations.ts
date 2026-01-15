@@ -5,10 +5,11 @@ interface Translation {
 	'code-title': string;
 	'variables-title': string;
 	'summary-title': string;
-	start: string;
-	step: string;
-	reset: string;
-	speed: string;
+		start: string;
+		step: string;
+		reset: string;
+		stop: string;
+		speed: string;
 	'current-iteration': string;
 	clickToStart: string;
 	'hover-hint': string;
@@ -41,6 +42,7 @@ export const translations: Record<Language, Translation> = {
 		start: 'Start',
 		step: 'Next Step',
 		reset: 'Reset',
+		stop: 'Stop',
 		speed: 'Speed:',
 		'current-iteration': 'Current Iteration',
 		clickToStart: '👆 Click Start to begin!',
@@ -123,6 +125,7 @@ export const translations: Record<Language, Translation> = {
 		// step: '다음 단계',
 		step: '한 줄 실행',
 		reset: '초기화',
+		stop: '중지',
 		speed: '속도:',
 		'current-iteration': '현재 반복',
 		clickToStart: '👆 시작 버튼을 눌러보세요!',
