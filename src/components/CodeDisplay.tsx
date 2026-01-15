@@ -110,11 +110,8 @@ export const CodeDisplay: React.FC = () => {
 					<div
 						key={idx}
 						className={clsx(
-							'block py-1.5 px-2.5 rounded-md transition-all duration-300',
+							'flex items-center py-1.5 rounded-md transition-all duration-300',
 							{
-								'pl-10': item.indent === 1,
-								'pl-20': item.indent === 2,
-								'pl-28': item.indent === 3,
 								'bg-gray-600 font-bold filter brightness-110':
 								// 'bg-gray-600 text-gray-900 font-bold animate-pulse-once':
 									idx === currentLine,
@@ -122,7 +119,21 @@ export const CodeDisplay: React.FC = () => {
 							}
 						)}
 					>
-						{highlightSyntax(item.line)}
+						<span className="text-gray-500 text-sm mr-4 w-8 text-right select-none flex-shrink-0">
+							{idx + 1}
+						</span>
+						<div
+							className={clsx(
+								'flex-1 px-2.5',
+								{
+									'pl-10': item.indent === 1,
+									'pl-20': item.indent === 2,
+									'pl-28': item.indent === 3,
+								}
+							)}
+						>
+							{highlightSyntax(item.line)}
+						</div>
 					</div>
 				))}
 			</div>
