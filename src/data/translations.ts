@@ -19,11 +19,6 @@ interface Translation {
 		title: string;
 		overview: string;
 		steps: string[];
-		// step1: string;
-		// step2: string;
-		// step3: string;
-		// step4: string;
-		// step5: string;
 		final: string;
 		explanation: string;
 	};
@@ -49,7 +44,7 @@ export const translations: Record<Language, Translation> = {
 		speed: 'Speed:',
 		'current-iteration': 'Current Iteration',
 		clickToStart: '👆 Click Start to begin!',
-		'hover-hint': '💡 **Tip:** Hover over colored keywords in the code to see detailed explanations!',
+		'hover-hint': '💡 **Tip:** Click on colored keywords in the code to see detailed explanations!',
 		'debug-controls-hint': '🎮 **Controls:** Use **Start** to run automatically, **Next Step** to go line-by-line, and **Reset** to start over. Adjust speed with the slider.',
 		'variables-hint': '📊 **Variables Window:** This shows the current values of all variables as the code executes. Watch how `Sum` and `i` change as the program runs!',
 		
@@ -125,12 +120,13 @@ export const translations: Record<Language, Translation> = {
 		'variables-title': '💾 변수',
 		'summary-title': '🎯 이 코드는 무엇을 할까요?',
 		start: '시작',
-		step: '다음 단계',
+		// step: '다음 단계',
+		step: '한 줄 실행',
 		reset: '초기화',
 		speed: '속도:',
 		'current-iteration': '현재 반복',
 		clickToStart: '👆 시작 버튼을 눌러보세요!',
-		'hover-hint': '💡 **팁:** 코드에서 색칠된 키워드에 마우스를 올리면 자세한 설명을 볼 수 있어요!',
+		'hover-hint': '💡 **팁:** 코드에서 색칠된 키워드를 클릭하면 자세한 설명을 볼 수 있어요!',
 		'debug-controls-hint': '🎮 **조작 방법:** **시작** 버튼으로 자동 실행, **다음 단계**로 한 줄씩 진행, **초기화**로 처음부터 다시 시작할 수 있어요. 슬라이더로 속도를 조절할 수 있어요.',
 		'variables-hint': '📊 **변수 창:** 코드가 실행되면서 모든 변수의 현재 값을 보여줘요. 프로그램이 실행될 때 `Sum`과 `i`가 어떻게 변하는지 지켜보세요!',
 		

@@ -9,15 +9,15 @@ import clsx from 'clsx';
 
 export const CodeDisplay: React.FC = () => {
 	const { currentLine, language } = useAppStore();
-	const { tooltip, showTooltip, hideTooltip } = useTooltip();
+	const { tooltip, toggleTooltip, hideTooltip, tooltipRef } = useTooltip();
 	const t = getTranslation(language);
 
-	const handleKeywordHover = (
+	const handleKeywordClick = (
 		e: React.MouseEvent<HTMLSpanElement>,
 		keyword: string
 	) => {
-		const rect = e.currentTarget.getBoundingClientRect();
-		showTooltip(keyword, rect.left + window.scrollX, rect.bottom + window.scrollY + 10);
+		e.stopPropagation();
+		toggleTooltip(keyword, e.currentTarget);
 	};
 
 	const highlightSyntax = (line: string) => {
@@ -42,9 +42,9 @@ export const CodeDisplay: React.FC = () => {
 				return (
 					<span
 						key={idx}
-						className="text-purple-400 cursor-help hover:bg-purple-400/20 rounded px-1 transition-colors"
-						onMouseEnter={(e) => handleKeywordHover(e, keyword)}
-						onMouseLeave={hideTooltip}
+						data-keyword
+						className="text-purple-400 cursor-pointer hover:bg-purple-400/20 rounded px-1 transition-colors"
+						onClick={(e) => handleKeywordClick(e, keyword)}
 					>
 						{token}
 					</span>
@@ -56,9 +56,9 @@ export const CodeDisplay: React.FC = () => {
 				return (
 					<span
 						key={idx}
-						className="text-red-400 cursor-help font-bold hover:bg-red-400/20 rounded px-1 transition-colors"
-						onMouseEnter={(e) => handleKeywordHover(e, 'i')}
-						onMouseLeave={hideTooltip}
+						data-keyword
+						className="text-red-400 cursor-pointer font-bold hover:bg-red-400/20 rounded px-1 transition-colors"
+						onClick={(e) => handleKeywordClick(e, 'i')}
 					>
 						{token}
 					</span>
@@ -79,9 +79,9 @@ export const CodeDisplay: React.FC = () => {
 				return (
 					<span
 						key={idx}
-						className="text-cyan-400 cursor-help hover:bg-cyan-400/20 rounded px-1 transition-colors"
-						onMouseEnter={(e) => handleKeywordHover(e, 'operator')}
-						onMouseLeave={hideTooltip}
+						data-keyword
+						className="text-cyan-400 cursor-pointer hover:bg-cyan-400/20 rounded px-1 transition-colors"
+						onClick={(e) => handleKeywordClick(e, 'operator')}
 					>
 						{token}
 					</span>
@@ -127,7 +127,7 @@ export const CodeDisplay: React.FC = () => {
 				))}
 			</div>
 			
-			<Tooltip keyword={tooltip.keyword} x={tooltip.x} y={tooltip.y} />
+			<Tooltip keyword={tooltip.keyword} x={tooltip.x} y={tooltip.y} tooltipRef={tooltipRef} onClose={hideTooltip} />
 		</>
 	);
 };

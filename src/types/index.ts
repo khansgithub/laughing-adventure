@@ -36,4 +36,5 @@ export interface TooltipPosition {
 	x: number;
 	y: number;
 	keyword: string | null;
+	keywordElement: HTMLElement | null;
 }
